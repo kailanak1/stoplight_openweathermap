@@ -69,6 +69,10 @@ paths:
       - schema:
           type: string
           default: json
+          enum:
+            - json
+            - xml
+            - html
         name: mode
         in: path
         description: '**Mode*. *Example: html. Determines the format of the response. Possible values are `json`, `xml`, and `html`. If the mode parameter is empty, the format is `json` by default.'
