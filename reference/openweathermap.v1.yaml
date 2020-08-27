@@ -46,7 +46,7 @@ paths:
                     type: number
                   name:
                     type: string
-                    description: NameName
+                    description: Name
                     example: Cairns
                   id:
                     description: City ID
@@ -72,22 +72,22 @@ paths:
                         description: '‘Country code (GB, JP etc.)’'
                         example: AU
                       sunrise:
-                        description: '‘Sunrise time, unix, UTC’'
+                        description: 'Sunrise time, unix, UTC'
                         example: '1435610796'
                         type: number
                       sunset:
-                        description: '‘Sunset time, unix, UTC’'
+                        description: 'Sunset time, unix, UTC'
                         example: '1435650870'
                         type: number
                   dt:
-                    description: '‘Time of data calculation, unix, UTC’'
+                    description: 'Time of data calculation, unix, UTC'
                     example: '1435658272'
                     type: number
                   clouds:
                     type: object
                     properties:
                       all:
-                        description: '‘Cloudiness, %’'
+                        description: 'Cloudiness, %'
                         example: '75'
                         type: number
                   wind:
@@ -95,23 +95,23 @@ paths:
                     description: ''
                     properties:
                       speed:
-                        description: '‘Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.’'
+                        description: 'Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.'
                         example: '5.1'
                         type: number
                       deg:
-                        description: '‘Wind direction, degrees (meteorological)’'
+                        description: 'Wind direction, degrees (meteorological)'
                         example: '150'
                         type: number
                       visibility:
-                        description: '‘Visibility, meter’'
-                        example: '16093'
                         type: number
+                        description: 'Visibility, meter'
+                        example: 16093
                   main:
                     type: object
                     description: ''
                     properties:
                       temp:
-                        description: '‘Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.’'
+                        description: 'Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
                         example: '293.25'
                         type: number
                       feels_like:
@@ -119,19 +119,19 @@ paths:
                         example: '41.16'
                         type: number
                       temp_min:
-                        description: '‘Minimum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.’'
+                        description: 'Minimum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
                         example: '289.82'
                         type: number
                       temp_max:
-                        description: '‘Maximum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.’'
+                        description: 'Maximum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
                         example: '295.37'
                         type: number
                       pressure:
-                        description: '‘Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa’'
+                        description: 'Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa'
                         example: '1019'
                         type: number
                       humidity:
-                        description: '‘Humidity, %’'
+                        description: 'Humidity, %'
                         example: '83'
                         type: number
                   base:
@@ -146,10 +146,10 @@ paths:
                         id:
                           type: string
                           description: Weather condition id
-                          example: '''803'''
+                          example: '803'
                         main:
                           type: string
-                          description: '‘Group of weather parameters (Rain, Snow, Extreme etc.)’'
+                          description: 'Group of weather parameters (Rain, Snow, Extreme etc.)'
                           example: clouds
                         description:
                           type: string
@@ -162,6 +162,12 @@ paths:
               examples:
                 example-1:
                   value: {}
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/unauthorized_response'
       operationId: get-weather
       description: 'Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations.'
       parameters:
@@ -218,7 +224,18 @@ paths:
         in: path
         description: '**Mode*. *Example: html. Determines the format of the response. Possible values are `json`, `xml`, and `html`. If the mode parameter is empty, the format is `json` by default.'
 components:
-  schemas: {}
+  schemas:
+    unauthorized_response:
+      title: unauthorized_response
+      type: object
+      properties:
+        cod:
+          type: integer
+        message:
+          type: string
+      required:
+        - cod
+        - message
   securitySchemes:
     app_id:
       name: appid
