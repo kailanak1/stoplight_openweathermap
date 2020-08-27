@@ -41,7 +41,7 @@ paths:
                         example: 37.35
                         description: 'City geo location, latitude'
                   cod:
-                    example: '200'
+                    example: 200
                     description: Internal parameter
                     type: number
                   name:
@@ -50,45 +50,45 @@ paths:
                     example: Cairns
                   id:
                     description: City ID
-                    example: '2172797'
+                    example: 2172797
                     type: number
                   timezone:
                     description: the timezone for the station
-                    example: '-28800'
+                    example: -28800
                     type: number
                   sys:
                     type: object
                     properties:
                       type:
                         description: Internal parameter
-                        example: '1'
+                        example: 1
                         type: number
                       id:
                         type: number
                         description: Internal parameter
-                        example: '8166'
+                        example: 8166
                       country:
                         type: string
                         description: '‘Country code (GB, JP etc.)’'
                         example: AU
                       sunrise:
                         description: 'Sunrise time, unix, UTC'
-                        example: '1435610796'
+                        example: 1435610796
                         type: number
                       sunset:
                         description: 'Sunset time, unix, UTC'
-                        example: '1435650870'
+                        example: 1435650870
                         type: number
                   dt:
                     description: 'Time of data calculation, unix, UTC'
-                    example: '1435658272'
+                    example: 1435658272
                     type: number
                   clouds:
                     type: object
                     properties:
                       all:
                         description: 'Cloudiness, %'
-                        example: '75'
+                        example: 75
                         type: number
                   wind:
                     type: object
@@ -96,11 +96,11 @@ paths:
                     properties:
                       speed:
                         description: 'Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.'
-                        example: '5.1'
+                        example: 5.1
                         type: number
                       deg:
                         description: 'Wind direction, degrees (meteorological)'
-                        example: '150'
+                        example: 150
                         type: number
                       visibility:
                         type: number
@@ -112,27 +112,27 @@ paths:
                     properties:
                       temp:
                         description: 'Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
-                        example: '293.25'
+                        example: 293.25
                         type: number
                       feels_like:
-                        description: What the weather feels like despite the actual numbers
-                        example: '41.16'
+                        description: 'What the weather feels like despite the actual numbers'
+                        example: 41.16
                         type: number
                       temp_min:
                         description: 'Minimum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
-                        example: '289.82'
+                        example: 289.82
                         type: number
                       temp_max:
                         description: 'Maximum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.'
-                        example: '295.37'
+                        example: 295.37
                         type: number
                       pressure:
                         description: 'Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa'
-                        example: '1019'
+                        example: 1019
                         type: number
                       humidity:
-                        description: 'Humidity, %'
-                        example: '83'
+                        description: Humidity, %
+                        example: 83
                         type: number
                   base:
                     type: string
@@ -144,9 +144,9 @@ paths:
                       type: object
                       properties:
                         id:
-                          type: string
+                          type: number
                           description: Weather condition id
-                          example: '803'
+                          example: 803
                         main:
                           type: string
                           description: 'Group of weather parameters (Rain, Snow, Extreme etc.)'
@@ -158,7 +158,7 @@ paths:
                         icon:
                           type: string
                           description: Weather icon id
-                          example: 04n
+                          example: '04n'
               examples:
                 example-1:
                   value: {}
@@ -186,6 +186,8 @@ paths:
           in: query
           name: units
           description: '**Units**. *Example: imperial*. Possible values: `standard`, `metric`, and `imperial`. When you do not use the `units` parameter, the format is `standard` by default.'
+      security:
+        - app_id: []
     parameters:
       - schema:
           type: string
@@ -222,7 +224,7 @@ paths:
             - html
         name: mode
         in: path
-        description: '**Mode*. *Example: html. Determines the format of the response. Possible values are `json`, `xml`, and `html`. If the mode parameter is empty, the format is `json` by default.'
+        description: '*Mode*. *Example: html. Determines the format of the response. Possible values are `json`, `xml`, and `html`. If the mode parameter is empty, the format is `json` by default.'
 components:
   schemas:
     unauthorized_response:
