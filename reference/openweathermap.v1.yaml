@@ -20,7 +20,148 @@ paths:
       summary: weather
       tags:
         - Weather endpoints
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  coord:
+                    type: object
+                    description: 'City geo location, longitude'
+                    properties:
+                      lon:
+                        type: number
+                        example: 145.77
+                        description: 'City geo location, longitude'
+                      lat:
+                        type: number
+                        example: 37.35
+                        description: 'City geo location, latitude'
+                  cod:
+                    example: '200'
+                    description: Internal parameter
+                    type: number
+                  name:
+                    type: string
+                    description: NameName
+                    example: Cairns
+                  id:
+                    description: City ID
+                    example: '2172797'
+                    type: number
+                  timezone:
+                    description: the timezone for the station
+                    example: '-28800'
+                    type: number
+                  sys:
+                    type: object
+                    properties:
+                      type:
+                        description: Internal parameter
+                        example: '1'
+                        type: number
+                      id:
+                        type: number
+                        description: Internal parameter
+                        example: '8166'
+                      country:
+                        type: string
+                        description: '‘Country code (GB, JP etc.)’'
+                        example: AU
+                      sunrise:
+                        description: '‘Sunrise time, unix, UTC’'
+                        example: '1435610796'
+                        type: number
+                      sunset:
+                        description: '‘Sunset time, unix, UTC’'
+                        example: '1435650870'
+                        type: number
+                  dt:
+                    description: '‘Time of data calculation, unix, UTC’'
+                    example: '1435658272'
+                    type: number
+                  clouds:
+                    type: object
+                    properties:
+                      all:
+                        description: '‘Cloudiness, %’'
+                        example: '75'
+                        type: number
+                  wind:
+                    type: object
+                    description: ''
+                    properties:
+                      speed:
+                        description: '‘Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.’'
+                        example: '5.1'
+                        type: number
+                      deg:
+                        description: '‘Wind direction, degrees (meteorological)’'
+                        example: '150'
+                        type: number
+                      visibility:
+                        description: '‘Visibility, meter’'
+                        example: '16093'
+                        type: number
+                  main:
+                    type: object
+                    description: ''
+                    properties:
+                      temp:
+                        description: '‘Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.’'
+                        example: '293.25'
+                        type: number
+                      feels_like:
+                        description: What the weather feels like despite the actual numbers
+                        example: '41.16'
+                        type: number
+                      temp_min:
+                        description: '‘Minimum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.’'
+                        example: '289.82'
+                        type: number
+                      temp_max:
+                        description: '‘Maximum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.’'
+                        example: '295.37'
+                        type: number
+                      pressure:
+                        description: '‘Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa’'
+                        example: '1019'
+                        type: number
+                      humidity:
+                        description: '‘Humidity, %’'
+                        example: '83'
+                        type: number
+                  base:
+                    type: string
+                    description: Internal parameter
+                    example: cmc stations
+                  weather:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Weather condition id
+                          example: '''803'''
+                        main:
+                          type: string
+                          description: '‘Group of weather parameters (Rain, Snow, Extreme etc.)’'
+                          example: clouds
+                        description:
+                          type: string
+                          description: Weather condition within the group
+                          example: broken clouds
+                        icon:
+                          type: string
+                          description: Weather icon id
+                          example: 04n
+              examples:
+                example-1:
+                  value: {}
       operationId: get-weather
       description: 'Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations.'
       parameters:
