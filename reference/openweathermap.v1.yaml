@@ -115,7 +115,7 @@ paths:
                         example: 293.25
                         type: number
                       feels_like:
-                        description: 'What the weather feels like despite the actual numbers'
+                        description: What the weather feels like despite the actual numbers
                         example: 41.16
                         type: number
                       temp_min:
@@ -131,7 +131,7 @@ paths:
                         example: 1019
                         type: number
                       humidity:
-                        description: Humidity, %
+                        description: 'Humidity, %'
                         example: 83
                         type: number
                   base:
@@ -158,7 +158,7 @@ paths:
                         icon:
                           type: string
                           description: Weather icon id
-                          example: '04n'
+                          example: 04n
               examples:
                 example-1:
                   value: {}
